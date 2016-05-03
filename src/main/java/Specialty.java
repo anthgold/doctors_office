@@ -34,13 +34,23 @@ public class Specialty {
     }
   }
 
+  public static Specialty find (int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM specialties WHERE id=:id";
+      Specialty specialty = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Specialty.class);
+      return specialty;
+    }
+  }
+
   @Override
   public boolean equals(Object otherSpecialty) {
     if (!(otherSpecialty instanceof Specialty)) {
       return false;
     } else {
       Specialty newSpecialty = (Specialty) otherSpecialty;
-      return this.getType().equals(newSpecialty.getType());
+      return this.getType().equals(newSpecialty.getType()) && this.getId() == newSpecialty.getId();
     }
   }
 

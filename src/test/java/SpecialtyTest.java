@@ -6,7 +6,7 @@ public class SpecialtyTest {
 
   @Before
   public void setUp() {
-    DB.sql2o = new Sql2o("jdbc:portgresql://localhost:5432/doctors_office_test", null, null);
+    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/doctors_office_test", null, null);
   }
 
   @After
@@ -53,7 +53,15 @@ public class SpecialtyTest {
     Specialty mySpecialty = new Specialty("General Care");
     mySpecialty.save();
     Specialty savedSpecialty = Specialty.all().get(0);
-    assertEquals(mySpecialty.getId(), savedTask.getId());
+    assertEquals(mySpecialty.getId(), savedSpecialty.getId());
+  }
+
+  @Test
+  public void find_findsSpecialtyInDatabase_true() {
+    Specialty mySpecialty = new Specialty("Endocrinology");
+    mySpecialty.save();
+    Specialty savedSpecialty = Specialty.find(mySpecialty.getId());
+    assertTrue(mySpecialty.equals(savedSpecialty));
   }
 
 }
