@@ -25,4 +25,10 @@ public class DoctorTest {
     assertEquals(true, myDoctor instanceof Doctor);
   }
 
+  @Test
+  public void getName_doctorInstantiatesWithName_String() {
+    Doctor myDoctor = new Doctor("Dr.Anderson", 3);
+    assertEquals("Dr.Anderson", myDoctor.getName());
+  }
+
 }
