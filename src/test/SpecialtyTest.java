@@ -28,4 +28,10 @@ public class SpecialtyTest {
     Specialty mySpecialty = new Specialty("General Care");
     assertEquals("General Care", mySpecialty.getType());
   }
+
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Specialty.all().size(), 0);
+  }
+
 }
