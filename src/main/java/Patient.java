@@ -21,6 +21,10 @@ public class Patient {
     return id;
   }
 
+  public int getDoctorId() {
+    return doctorid;
+  }
+
   @Override
   public boolean equals(Object otherPatient) {
     if (!(otherPatient instanceof Patient)) {
@@ -41,9 +45,11 @@ public class Patient {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO patients (name) VALUES (:name)";
+      String sql = "INSERT INTO patients (name, birthdate, doctorid) VALUES (:name, :birthdate, :doctorid)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
+        .addParameter("birthdate", this.birthdate)
+        .addParameter("doctorid", this.doctorid)
         .executeUpdate()
         .getKey();
     }

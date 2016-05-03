@@ -16,6 +16,12 @@ public class Specialty {
   public int getId() {
     return id;
   }
+  public static List<Specialty> all() {
+    String sql = "SELECT id, type FROM specialties";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Specialty.class);
+    }
+  }
 
   @Override
   public boolean equals(Object otherSpecialty) {
@@ -27,12 +33,8 @@ public class Specialty {
     }
   }
 
-  public static List<Specialty> all() {
-    String sql = "SELECT id, type FROM specialties";
-    try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(Specialty.class);
-    }
-  }
+
+
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
@@ -51,6 +53,17 @@ public class Specialty {
         .addParameter("id", id)
         .executeAndFetchFirst(Specialty.class);
       return specialty;
+    }
+  }
+
+  public List<Doctor> getDoctors() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM doctors where specialtyid=:id";
+      return con.createQuery(sql)
+        .addParameter("id", this.id)
+        // .addParameter("name", this.name)
+        // .addParameter("specialtyid", this.specialtyid)
+        .executeAndFetch(Doctor.class);
     }
   }
 

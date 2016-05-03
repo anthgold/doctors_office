@@ -19,6 +19,11 @@ public class Doctor {
     return id;
   }
 
+  public int getSpecialtyId() {
+    return specialtyid;
+  }
+
+
   @Override
   public boolean equals(Object otherDoctor) {
     if (!(otherDoctor instanceof Doctor)) {
@@ -26,7 +31,8 @@ public class Doctor {
     } else {
       Doctor newDoctor = (Doctor) otherDoctor;
       return this.getName().equals(newDoctor.getName()) &&
-             this.getId() == newDoctor.getId();
+             this.getId() == newDoctor.getId() &&
+             this.getSpecialtyId() == newDoctor.getSpecialtyId();
     }
   }
 
@@ -39,9 +45,10 @@ public class Doctor {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO doctors (name) VALUES (:name)";
+      String sql = "INSERT INTO doctors (name, specialtyid) VALUES (:name, :specialtyid)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
+        .addParameter("specialtyid", this.specialtyid)
         .executeUpdate()
         .getKey();
     }
@@ -54,6 +61,18 @@ public class Doctor {
         .addParameter("id", id)
         .executeAndFetchFirst(Doctor.class);
       return doctor;
+    }
+  }
+
+  public List<Patient> getPatients() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients where doctorid=:id";
+      return con.createQuery(sql)
+        .addParameter("id", this.id)
+        // .addParameter("name", this.name)
+        // .addParameter("birthdate", this.birthdate)
+        // .addParameter("doctorid", this.doctorid)
+        .executeAndFetch(Patient.class);
     }
   }
 

@@ -68,4 +68,14 @@ public class PatientTest {
     assertTrue(myPatient.equals(savedPatient));
   }
 
+  @Test
+  public void save_savesDoctorIdIntoDB_true() {
+    Doctor myDoctor = new Doctor("Dr. Anderson", 3);
+    myDoctor.save();
+    Patient myPatient = new Patient("Bill Murray", "11-23-1956", myDoctor.getId());
+    myPatient.save();
+    Patient savedPatient = Patient.find(myPatient.getId());
+    assertEquals(savedPatient.getDoctorId(), myDoctor.getId());
+  }
+
 }

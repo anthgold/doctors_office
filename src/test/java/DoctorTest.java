@@ -68,4 +68,15 @@ public class DoctorTest {
     assertTrue(myDoctor.equals(savedDoctor));
   }
 
+  @Test
+  public void save_savesSpecialtyIdIntoDB_true() {
+    Specialty mySpecialty = new Specialty("General Care");
+    mySpecialty.save();
+    // System.out.println("mySpecialtyId " + mySpecialty.getId());
+    Doctor myDoctor = new Doctor("Dr. Anderson", mySpecialty.getId());
+    myDoctor.save();
+    Doctor savedDoctor = Doctor.find(myDoctor.getId());
+    assertEquals(savedDoctor.getSpecialtyId(), mySpecialty.getId());
+  }
+
 }
