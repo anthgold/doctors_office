@@ -31,4 +31,9 @@ public class DoctorTest {
     assertEquals("Dr.Anderson", myDoctor.getName());
   }
 
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Doctor.all().size(), 0);
+  }
+
 }

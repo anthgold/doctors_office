@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DoctorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-05-03T20:52:56" hostname="epicodus-48.local" time="0.081">
+<testsuite name="DoctorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-05-03T20:59:44" hostname="epicodus-48.local" time="0.112">
   <properties/>
-  <testcase name="getName_doctorInstantiatesWithName_String" classname="DoctorTest" time="0.076"/>
-  <testcase name="Doctor_instantiatesCorrectly_true" classname="DoctorTest" time="0.004"/>
+  <testcase name="getName_doctorInstantiatesWithName_String" classname="DoctorTest" time="0.077"/>
+  <testcase name="Doctor_instantiatesCorrectly_true" classname="DoctorTest" time="0.006"/>
+  <testcase name="all_emptyAtFirst" classname="DoctorTest" time="0.029"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
