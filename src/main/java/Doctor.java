@@ -25,4 +25,16 @@ public class Doctor {
       return con.createQuery(sql).executeAndFetch(Doctor.class);
     }
   }
+
+  @Override
+  public boolean equals(Object otherDoctor) {
+    if (!(otherDoctor instanceof Doctor)) {
+      return false;
+    } else {
+      Doctor newDoctor = (Doctor) otherDoctor;
+      return this.getName().equals(newDoctor.getName()) &&
+             this.getId() == newDoctor.getId();
+    }
+  }
+
 }
