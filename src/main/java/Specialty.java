@@ -13,7 +13,7 @@ public class Specialty {
     return type;
   }
 
-  public int getId() { 
+  public int getId() {
     return id;
   }
 
@@ -21,6 +21,16 @@ public class Specialty {
     String sql = "SELECT id, type FROM specialties";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Specialty.class);
+    }
+  }
+
+  @Override
+  public boolean equals(Object otherSpecialty) {
+    if (!(otherSpecialty instanceof Specialty)) {
+      return false;
+    } else {
+      Specialty newSpecialty = (Specialty) otherSpecialty;
+      return this.getType().equals(newSpecialty.getType());
     }
   }
 
