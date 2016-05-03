@@ -19,13 +19,6 @@ public class Doctor {
     return id;
   }
 
-  public static List<Doctor> all() {
-    String sql = "SELECT id, name, specialtyid FROM doctors";
-    try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(Doctor.class);
-    }
-  }
-
   @Override
   public boolean equals(Object otherDoctor) {
     if (!(otherDoctor instanceof Doctor)) {
@@ -37,6 +30,13 @@ public class Doctor {
     }
   }
 
+  public static List<Doctor> all() {
+    String sql = "SELECT id, name, specialtyid FROM doctors";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Doctor.class);
+    }
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO doctors (name) VALUES (:name)";
@@ -44,6 +44,16 @@ public class Doctor {
         .addParameter("name", this.name)
         .executeUpdate()
         .getKey();
+    }
+  }
+
+  public static Doctor find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM doctors WHERE id=:id";
+      Doctor category = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Doctor.class);
+      return category;
     }
   }
 

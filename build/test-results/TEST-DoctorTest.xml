@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DoctorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2016-05-03T21:14:36" hostname="epicodus-48.local" time="0.14">
+<testsuite name="DoctorTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-03T21:21:23" hostname="epicodus-48.local" time="0.17">
   <properties/>
-  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="DoctorTest" time="0.082"/>
-  <testcase name="getName_doctorInstantiatesWithName_String" classname="DoctorTest" time="0.006"/>
-  <testcase name="Doctor_instantiatesCorrectly_true" classname="DoctorTest" time="0.005"/>
-  <testcase name="all_emptyAtFirst" classname="DoctorTest" time="0.03"/>
-  <testcase name="save_savesIntoDatabase_true" classname="DoctorTest" time="0.015"/>
+  <testcase name="find_findDoctorInDatabase_true" classname="DoctorTest" time="0.106"/>
+  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="DoctorTest" time="0.005"/>
+  <testcase name="getName_doctorInstantiatesWithName_String" classname="DoctorTest" time="0.005"/>
+  <testcase name="Doctor_instantiatesCorrectly_true" classname="DoctorTest" time="0.006"/>
+  <testcase name="all_emptyAtFirst" classname="DoctorTest" time="0.01"/>
+  <testcase name="save_savesIntoDatabase_true" classname="DoctorTest" time="0.018"/>
+  <testcase name="save_assignsIdToObject" classname="DoctorTest" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

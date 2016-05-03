@@ -44,9 +44,26 @@ public class DoctorTest {
   }
 
   @Test
-    public void save_savesIntoDatabase_true() {
-      Doctor myDoctor = new Doctor("Dr. Bob Smith", 3);
-      myDoctor.save();
-      assertTrue(Doctor.all().get(0).equals(myDoctor));
-    }
+  public void save_savesIntoDatabase_true() {
+    Doctor myDoctor = new Doctor("Dr. Bob Smith", 3);
+    myDoctor.save();
+    assertTrue(Doctor.all().get(0).equals(myDoctor));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Doctor myDoctor = new Doctor("Dr. Bob Smith", 3);
+    myDoctor.save();
+    Doctor savedDoctor = Doctor.all().get(0);
+    assertEquals(myDoctor.getId(), savedDoctor.getId());
+  }
+
+  @Test
+  public void find_findDoctorInDatabase_true() {
+    Doctor myDoctor = new Doctor("Dr. Bob Smith", 3);
+    myDoctor.save();
+    Doctor savedDoctor = Doctor.find(myDoctor.getId());
+    assertTrue(myDoctor.equals(savedDoctor));
+  }
+
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SpecialtyTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-03T21:14:36" hostname="epicodus-48.local" time="0.064">
+<testsuite name="SpecialtyTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-03T21:21:24" hostname="epicodus-48.local" time="0.073">
   <properties/>
-  <testcase name="find_findsSpecialtyInDatabase_true" classname="SpecialtyTest" time="0.017"/>
+  <testcase name="find_findsSpecialtyInDatabase_true" classname="SpecialtyTest" time="0.019"/>
   <testcase name="all_emptyAtFirst" classname="SpecialtyTest" time="0.009"/>
-  <testcase name="Specialty_instantiatesCorrectly_true" classname="SpecialtyTest" time="0.004"/>
+  <testcase name="Specialty_instantiatesCorrectly_true" classname="SpecialtyTest" time="0.005"/>
   <testcase name="getType_specialtyInstantiatesWithType_String" classname="SpecialtyTest" time="0.005"/>
-  <testcase name="equals_returnsTrueIfTypesAreTheSame" classname="SpecialtyTest" time="0.004"/>
-  <testcase name="save_assignsIdToObject" classname="SpecialtyTest" time="0.013"/>
-  <testcase name="save_returnsTrueIfTypesAreTheSame" classname="SpecialtyTest" time="0.012"/>
+  <testcase name="equals_returnsTrueIfTypesAreTheSame" classname="SpecialtyTest" time="0.005"/>
+  <testcase name="save_assignsIdToObject" classname="SpecialtyTest" time="0.015"/>
+  <testcase name="save_returnsTrueIfTypesAreTheSame" classname="SpecialtyTest" time="0.014"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

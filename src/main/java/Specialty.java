@@ -17,6 +17,16 @@ public class Specialty {
     return id;
   }
 
+  @Override
+  public boolean equals(Object otherSpecialty) {
+    if (!(otherSpecialty instanceof Specialty)) {
+      return false;
+    } else {
+      Specialty newSpecialty = (Specialty) otherSpecialty;
+      return this.getType().equals(newSpecialty.getType()) && this.getId() == newSpecialty.getId();
+    }
+  }
+
   public static List<Specialty> all() {
     String sql = "SELECT id, type FROM specialties";
     try(Connection con = DB.sql2o.open()) {
@@ -41,16 +51,6 @@ public class Specialty {
         .addParameter("id", id)
         .executeAndFetchFirst(Specialty.class);
       return specialty;
-    }
-  }
-
-  @Override
-  public boolean equals(Object otherSpecialty) {
-    if (!(otherSpecialty instanceof Specialty)) {
-      return false;
-    } else {
-      Specialty newSpecialty = (Specialty) otherSpecialty;
-      return this.getType().equals(newSpecialty.getType()) && this.getId() == newSpecialty.getId();
     }
   }
 
