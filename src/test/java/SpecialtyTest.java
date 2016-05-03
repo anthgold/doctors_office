@@ -13,8 +13,10 @@ public class SpecialtyTest {
   public void tearDown() {
     try(Connection con = DB.sql2o.open()) {
       String deleteSpecialtiesQuery = "DELETE FROM specialties *;";
+      String deletePatientsQuery = "DELETE FROM patients *;";
       String deleteDoctorsQuery = "DELETE FROM doctors *;";
       con.createQuery(deleteSpecialtiesQuery).executeUpdate();
+      con.createQuery(deletePatientsQuery).executeUpdate();
       con.createQuery(deleteDoctorsQuery).executeUpdate();
     }
   }

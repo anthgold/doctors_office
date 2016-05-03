@@ -50,10 +50,10 @@ public class Doctor {
   public static Doctor find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM doctors WHERE id=:id";
-      Doctor category = con.createQuery(sql)
+      Doctor doctor = con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Doctor.class);
-      return category;
+      return doctor;
     }
   }
 
