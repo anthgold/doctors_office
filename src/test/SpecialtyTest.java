@@ -48,4 +48,12 @@ public class SpecialtyTest {
     assertTrue(Specialty.all().get(0).equals(mySpecialty));
   }
 
+  @Test
+  public void save_assignsIdToObject() {
+    Specialty mySpecialty = new Specialty("General Care");
+    mySpecialty.save();
+    Specialty savedSpecialty = Specialty.all().get(0);
+    assertEquals(mySpecialty.getId(), savedTask.getId());
+  }
+
 }
