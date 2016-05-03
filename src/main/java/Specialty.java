@@ -24,6 +24,15 @@ public class Specialty {
     }
   }
 
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO specialties (type) VALUES (:type)";
+      con.createQuery(sql)
+      .addParameter("type", this.type)
+      .executeUpdate();
+    }
+  }
+
   @Override
   public boolean equals(Object otherSpecialty) {
     if (!(otherSpecialty instanceof Specialty)) {
@@ -33,7 +42,5 @@ public class Specialty {
       return this.getType().equals(newSpecialty.getType());
     }
   }
-
-
 
 }

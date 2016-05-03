@@ -41,4 +41,11 @@ public class SpecialtyTest {
     assertTrue(firstSpecialty.equals(secondSpecialty));
   }
 
+  @Test
+  public void save_returnsTrueIfTypesAreTheSame() {
+    Specialty mySpecialty = new Specialty("General Care");
+    mySpecialty.save();
+    assertTrue(Specialty.all().get(0).equals(mySpecialty));
+  }
+
 }
