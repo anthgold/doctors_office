@@ -43,4 +43,10 @@ public class DoctorTest {
     assertTrue(firstDoctor.equals(secondDoctor));
   }
 
+  @Test
+    public void save_savesIntoDatabase_true() {
+      Doctor myDoctor = new Doctor("Dr. Bob Smith", 3);
+      myDoctor.save();
+      assertTrue(Doctor.all().get(0).equals(myDoctor));
+    }
 }
